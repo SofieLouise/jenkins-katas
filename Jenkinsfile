@@ -59,6 +59,7 @@ pipeline {
       agent any
       environment {
         DOCKERCREDS = credentials('docker_login')
+        docker_username = 'soffi'
       }
       options {
         skipDefaultCheckout(true)
@@ -71,8 +72,5 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    docker_username = 'soffi'
   }
 }
