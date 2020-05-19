@@ -25,5 +25,17 @@ pipeline {
       }
     }
 
+    stage('Clone Down') {
+      agent {
+        node {
+          label 'host'
+        }
+
+      }
+      steps {
+        stash(name: 'code', excludes: '.git')
+      }
+    }
+
   }
 }
