@@ -56,8 +56,17 @@ pipeline {
     }
 
     stage('push docker app') {
+      agent {
+        docker {
+          image 'gradle:jdk11'
+        }
+
+      }
       environment {
         DOCKERCREDS = credentials('docker_login')
+      }
+      options {
+        skipDefaultCheckout(true)
       }
       steps {
         unstash 'code'
